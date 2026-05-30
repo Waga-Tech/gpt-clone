@@ -8,12 +8,19 @@ import cors from "cors";
 import { errorHandler } from "./src/middleware/error-handler.js";
 
 const app = express();
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  }),
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//   }),
+// );
+
+app.use(cors());
+
 app.use(express.json()); //middleware to parse json data from request body
+
+app.get("/", (req, res) => {
+  res.send("GPT Clone Backend is running!");
+});
 
 app.use("/api", mainRouter);
 // final error handling middleware
