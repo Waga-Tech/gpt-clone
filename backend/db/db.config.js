@@ -7,8 +7,11 @@ const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   ssl: {
-    ca: process.env.DB_CA_CERT,
+    rejectUnauthorized: false,
   },
+  // ssl: {
+  //   ca: process.env.DB_CA_CERT,
+  // },
 });
 
 export default db;
